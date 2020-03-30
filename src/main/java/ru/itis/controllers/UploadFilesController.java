@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UploadFilesController {
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/uploadFiles", method = RequestMethod.GET)
     public ModelAndView getUploadFilesPage() {
         ModelAndView modelAndView = new ModelAndView();

@@ -11,6 +11,6 @@
     <title></title>
 </head>
 <body>
-<img src="../images/${filename}">
+<img src="https://www.computerra.ru/wp-content/uploads/2020/02/doom-eternal-100833082-large.jpg">
 </body>
 </html>

@@ -12,6 +12,7 @@ import ru.itis.security.details.UserDetailsImpl;
 @Controller
 public class ProfileController {
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public ModelAndView getProfilePage(Authentication authentication) {
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();

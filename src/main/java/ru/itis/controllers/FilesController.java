@@ -1,6 +1,7 @@
 package ru.itis.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class FilesController {
     @Autowired
     private FileLoadService fileLoadService;
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/files", method = RequestMethod.POST)
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile) {
         ModelAndView modelAndView = new ModelAndView();
@@ -30,6 +32,7 @@ public class FilesController {
         return modelAndView;
     }
 
+    @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/files/{file-name:.+}", method = RequestMethod.GET)
     public ModelAndView getFile(@PathVariable("file-name") String filename) {
         String name = filename.substring(10);

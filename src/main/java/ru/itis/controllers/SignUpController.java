@@ -15,6 +15,7 @@ public class SignUpController {
     @Autowired
     private SignUpService signUpService;
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public ModelAndView getSignUpPage() {
         ModelAndView modelAndView = new ModelAndView();
@@ -22,6 +23,7 @@ public class SignUpController {
         return modelAndView;
     }
 
+    @PreAuthorize("permitAll()")
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public ModelAndView signUp(SignUpDto form) {
         Boolean auth = signUpService.signUp(form);

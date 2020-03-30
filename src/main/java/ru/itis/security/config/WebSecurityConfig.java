@@ -27,8 +27,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         super.configure(http);
 
-        http.csrf().disable();
-
         http.formLogin()
                 .loginPage("/logIn")
                 .usernameParameter("login")
