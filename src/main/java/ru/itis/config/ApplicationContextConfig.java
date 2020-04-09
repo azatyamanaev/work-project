@@ -23,6 +23,10 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -112,4 +116,14 @@ public class ApplicationContextConfig {
         properties.setProperty("hibernate.show_sql", "true");
         return properties;
     }
+
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("ru.itis.controllers"))
+                .paths(PathSelectors.any())
+                .build();
+    }
+
 }

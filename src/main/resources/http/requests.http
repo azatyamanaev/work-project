@@ -1,0 +1,16 @@
+POST http://localhost:8080/logIn
+Content-Type: application/json
+
+{
+  "login" : "admin",
+  "password" : "admin"
+}
+
+###
+
+GET http://localhost:8080/profile
+
+Authorization: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzIiwibmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIn0.ldK1qxBeAjtBF5aQFCBvuX7MQ-D0Fh0dcF_2RLRtgmo"
+
+###
+

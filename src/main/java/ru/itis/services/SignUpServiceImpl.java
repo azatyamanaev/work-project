@@ -24,21 +24,14 @@ public class SignUpServiceImpl implements SignUpService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public Boolean signUp(SignUpDto form) {
-        Optional<User> clientCandidate;
-        User user;
-        clientCandidate = usersRepository.findOneByLogin(form.getLogin());
-        if (clientCandidate.isEmpty() && !form.getLogin().equals("") && !form.getPassword().equals("") && !form.getEmail().equals("")) {
-            user = User.builder()
-                    .login(form.getLogin()).email(form.getEmail())
-                    .password(passwordEncoder.encode(form.getPassword()))
-                    .state(State.NOT_CONFIRMED)
-                    .role(Role.USER)
-                    .build();
-            usersRepository.save(user);
-            emailSender.sendNotificationAboutRegistration(form.getLogin());
-            return true;
-        }
-        return false;
+    public void signUp(SignUpDto form) {
+        User user = User.builder()
+                .login(form.getLogin()).email(form.getEmail())
+                .password(passwordEncoder.encode(form.getPassword()))
+                .state(State.NOT_CONFIRMED)
+                .role(Role.USER)
+                .build();
+        usersRepository.save(user);
+        emailSender.sendNotificationAboutRegistration(form.getLogin());
     }
 }

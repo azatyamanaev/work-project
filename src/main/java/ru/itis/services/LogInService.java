@@ -1,7 +1,8 @@
 package ru.itis.services;
 
 import ru.itis.dto.LogInDto;
+import ru.itis.dto.TokenDto;
 
 public interface LogInService {
-    Boolean logIn(LogInDto form);
+    TokenDto logIn(LogInDto logInData);
 }

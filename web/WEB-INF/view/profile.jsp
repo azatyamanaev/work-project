@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,5 +11,9 @@
 <body>
 <h1>${user.login}</h1>
 <h1>${user.email}</h1>
+<form:form action="/logout" id="logout" method="post">
+
+</form:form>
+<button onclick="document.getElementById('logout').submit();">Logout</button>
 </body>
 </html>

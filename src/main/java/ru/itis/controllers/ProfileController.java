@@ -1,25 +1,27 @@
 package ru.itis.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import ru.itis.models.User;
-import ru.itis.security.details.UserDetailsImpl;
+import org.springframework.web.bind.annotation.RestController;
+import ru.itis.dto.UserDto;
+import ru.itis.security.jwt.details.UserDetailsImpl;
 
-@Controller
+@RestController
 public class ProfileController {
 
     @PreAuthorize("isAuthenticated()")
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ModelAndView getProfilePage(Authentication authentication) {
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        User user = userDetails.getUser();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("profile");
-        return modelAndView;
+    public ResponseEntity<UserDto> getProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getDetails();
+        System.out.println(userDetails);
+        return ResponseEntity.ok(UserDto.builder()
+                .login(userDetails.getUsername())
+                .id(userDetails.getUserId())
+                .build());
     }
 }

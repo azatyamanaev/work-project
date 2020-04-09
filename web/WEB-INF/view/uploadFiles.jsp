@@ -12,12 +12,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <script
             src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
     <title>Document</title>
     <script>
+
         function sendFile() {
             let formData = new FormData();
             let files = ($('#file'))[0]['files'];
@@ -25,12 +28,17 @@
                 formData.append("file", file);
             });
 
+            let token = $("meta[name='_csrf']").attr("content");
+            let header = $("meta[name='_csrf_header']").attr("content");
             $.ajax({
                 type: "POST",
                 url: "http://localhost:8080/files",
                 data: formData,
                 processData: false,
-                contentType: false
+                contentType: false,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token)
+                }
             })
                 .done(function (response) {
                     alert(response)

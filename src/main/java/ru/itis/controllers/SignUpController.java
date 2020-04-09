@@ -20,10 +20,10 @@ public class SignUpController {
     @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public ModelAndView getSignUpPage(Authentication authentication) {
         ModelAndView modelAndView = new ModelAndView();
-        if (authentication != null) {
-            modelAndView.setViewName("signUp");
-        } else {
+        if (authentication == null) {
             modelAndView.setViewName("redirect:/");
+        } else {
+            modelAndView.setViewName("signUp");
         }
         return modelAndView;
     }
@@ -31,13 +31,9 @@ public class SignUpController {
     @PreAuthorize("permitAll()")
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public ModelAndView signUp(SignUpDto form) {
-        Boolean auth = signUpService.signUp(form);
+        signUpService.signUp(form);
         ModelAndView modelAndView = new ModelAndView();
-        if (auth) {
-            modelAndView.setViewName("redirect:/confirm");
-        } else {
-            modelAndView.setViewName("signUp");
-        }
+        modelAndView.setViewName("redirect:/confirm");
         return modelAndView;
     }
 }

@@ -1,7 +1,6 @@
 package ru.itis.aspects;
 
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class FileUploadAspect {
     private EmailSender emailSender;
 
     @After(value = "execution(* ru.itis.services.FileLoadService.uploadFile(*))")
-    public void after(JoinPoint joinPoint) {
+    public void after() {
         emailSender.sendLinkToUploadedFile();
     }
 }

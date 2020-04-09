@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -62,8 +63,8 @@
     </style>
 </head>
 <body>
-${_csrf.token}
-<form action="/logIn" method="post">
+
+<form:form action="/logIn" method="post">
     <div class="container">
         <h1>Log In</h1>
         <p>Please fill in this form to enter your account.</p>
@@ -74,7 +75,6 @@ ${_csrf.token}
 
         <label for="password"><b>Password</b></label>
         <input type="password" id="password" placeholder="Enter Password" name="password" required>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <hr>
 
         <button type="submit" class="registerbtn">LogIn</button>
@@ -83,7 +83,7 @@ ${_csrf.token}
     <div class="container signin">
         <p>Don't have an account? <a href="/signUp">SignUp</a>.</p>
     </div>
-</form>
+</form:form>
 
 </body>
 </html>

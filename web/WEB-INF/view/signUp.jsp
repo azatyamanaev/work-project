@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: monitor
@@ -70,7 +71,7 @@
 </head>
 <body>
 
-<form action="/signUp" method="post">
+<form:form action="/signUp" method="post">
     <div class="container">
         <h1>Register</h1>
         <p>Please fill in this form to create an account.</p>
@@ -92,7 +93,7 @@
     <div class="container signin">
         <p>Already have an account? <a href="/logIn">LogIn</a>.</p>
     </div>
-</form>
+</form:form>
 
 </body>
 </html>
