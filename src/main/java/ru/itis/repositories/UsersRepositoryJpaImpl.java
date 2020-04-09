@@ -57,6 +57,6 @@ public class UsersRepositoryJpaImpl implements UsersRepository {
 
     @Override
     public List<User> findAll() {
-        return entityManager.createQuery(SQL_SELECT_ALL, User.class).getResultList();
+        return entityManager.createQuery("from users", User.class).getResultList();
     }
 }

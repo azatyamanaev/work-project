@@ -18,7 +18,6 @@ public class ProfileController {
     public ResponseEntity<UserDto> getProfile() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getDetails();
-        System.out.println(userDetails);
         return ResponseEntity.ok(UserDto.builder()
                 .login(userDetails.getUsername())
                 .id(userDetails.getUserId())

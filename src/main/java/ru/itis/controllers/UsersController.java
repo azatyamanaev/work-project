@@ -1,17 +1,17 @@
 package ru.itis.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RestController;
 import ru.itis.dto.UserDto;
 import ru.itis.services.UsersService;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class UsersController {
 
     @Autowired
@@ -19,12 +19,8 @@ public class UsersController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public ModelAndView getUsersPage() {
-        List<UserDto> users = usersService.getAllUsers();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("users", users);
-        modelAndView.setViewName("users");
-        return modelAndView;
+    public ResponseEntity<List<UserDto>> getUsers() {
+        return ResponseEntity.ok(usersService.getAllUsers());
     }
 
 }
