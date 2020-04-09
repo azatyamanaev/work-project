@@ -1,6 +1,7 @@
 package ru.itis.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -14,7 +15,9 @@ import java.util.Optional;
 
 @Component(value = "logInServiceImpl")
 public class LogInServiceImpl implements LogInService {
+
     @Autowired
+    @Qualifier(value = "usersRepositoryJdbcTemplateImpl")
     private UsersRepository usersRepository;
 
     @Override
@@ -26,7 +29,7 @@ public class LogInServiceImpl implements LogInService {
         if (clientCandidate.isPresent()) {
             user = clientCandidate.get();
             if (user.getState().equals(State.CONFIRMED)) {
-                return encoder.matches(form.getPassword(), user.getHashPassword());
+                return encoder.matches(form.getPassword(), user.getPassword());
             } else {
                 return false;
             }

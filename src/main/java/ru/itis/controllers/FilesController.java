@@ -22,7 +22,6 @@ public class FilesController {
     @RequestMapping(value = "/files", method = RequestMethod.POST)
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile multipartFile) {
         ModelAndView modelAndView = new ModelAndView();
-        String name = null;
         if (!multipartFile.isEmpty()) {
             fileLoadService.uploadFile(multipartFile);
             modelAndView.setViewName("uploadSuccess");

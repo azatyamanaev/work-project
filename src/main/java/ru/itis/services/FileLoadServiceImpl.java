@@ -9,9 +9,9 @@ import java.util.Random;
 @Component
 public class FileLoadServiceImpl implements FileLoadService {
     private static String path = File.separator + "home" + File.separator + "monitor" + File.separator + "Рабочий стол" + File.separator + "yamanaev11-802(workdr)"
-            + File.separator + "JavaLab" + File.separator + "work-project" + File.separator + "web" + File.separator + "WEB-INF" + File.separator + "storage";
+            + File.separator + "JavaLab" + File.separator + "wp" + File.separator + "web" + File.separator + "WEB-INF" + File.separator + "storage";
     private static String pathTo = File.separator + "home" + File.separator + "monitor" + File.separator + "Рабочий стол" + File.separator + "yamanaev11-802(workdr)"
-            + File.separator + "JavaLab" + File.separator + "work-project" + File.separator + "web" + File.separator + "WEB-INF" + File.separator + "images";
+            + File.separator + "JavaLab" + File.separator + "wp" + File.separator + "web" + File.separator + "WEB-INF" + File.separator + "images";
 
     @Override
     public void uploadFile(MultipartFile multipartFile) {

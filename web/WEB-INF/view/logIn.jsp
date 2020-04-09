@@ -72,11 +72,11 @@
         <label for="login"><b>Login</b></label>
         <input type="password" id="login" placeholder="Enter Login" name="login" required>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" id="psw" placeholder="Enter Password" name="password" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" id="password" placeholder="Enter Password" name="password" required>
         <hr>
 
-        <button type="submit" class="registerbtn">Register</button>
+        <button type="submit" class="registerbtn">LogIn</button>
     </div>
 
     <div class="container signin">

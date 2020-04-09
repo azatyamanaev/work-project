@@ -44,7 +44,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
                     .id(row.getLong("id"))
                     .login(row.getString("login"))
                     .email(row.getString("email"))
-                    .hashPassword(row.getString("password"))
+                    .password(row.getString("password"))
                     .state(State.valueOf(row.getString("state")))
                     .role(Role.valueOf(row.getString("role")))
                     .build();
@@ -75,7 +75,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
             PreparedStatement statement = dataSource.prepareStatement(SQL_INSERT_CLIENT);
             statement.setString(1, model.getLogin());
             statement.setString(2, model.getEmail());
-            statement.setString(3, model.getHashPassword());
+            statement.setString(3, model.getPassword());
             statement.setString(4, String.valueOf(model.getState()));
             statement.setString(5, String.valueOf(model.getRole()));
             return statement;
@@ -89,7 +89,7 @@ public class UsersRepositoryJdbcTemplateImpl implements UsersRepository {
             PreparedStatement statement = dataSource.prepareStatement(SQL_UPDATE_CLIENT);
             statement.setString(1, model.getLogin());
             statement.setString(2, model.getEmail());
-            statement.setString(3, model.getHashPassword());
+            statement.setString(3, model.getPassword());
             statement.setString(4, model.getState().toString());
             statement.setString(5, model.getRole().toString());
             statement.setLong(6, model.getId());

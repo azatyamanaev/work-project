@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.Random;
 
 @Component
-public class StringGeneratorImpl implements StringGenerator{
+public class StringGeneratorImpl implements StringGenerator {
 
     @Override
     public String generateString() {

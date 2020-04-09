@@ -2,8 +2,7 @@ package ru.itis.models;
 
 import lombok.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Data
 @NoArgsConstructor
@@ -11,20 +10,23 @@ import javax.persistence.Enumerated;
 @Getter
 @Setter
 @Builder()
+@Table(name = "users")
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String login;
     private String email;
-    private String hashPassword;
+    private String password;
 
     @Enumerated(value = EnumType.STRING)
     private State state;
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    public User(String login, String email, String hashPassword) {
+    public User(String login, String email, String password) {
         this.login = login;
         this.email = email;
-        this.hashPassword = hashPassword;
+        this.password = password;
     }
 }

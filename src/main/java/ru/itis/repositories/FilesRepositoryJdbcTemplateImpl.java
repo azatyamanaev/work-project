@@ -6,12 +6,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Component;
 import ru.itis.models.FileInfo;
 
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class FilesRepositoryJdbcTemplateImpl implements FilesRepository {
 
     //language=SQL
