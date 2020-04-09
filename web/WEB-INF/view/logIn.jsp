@@ -62,7 +62,7 @@
     </style>
 </head>
 <body>
-
+${_csrf.token}
 <form action="/logIn" method="post">
     <div class="container">
         <h1>Log In</h1>
@@ -74,6 +74,7 @@
 
         <label for="password"><b>Password</b></label>
         <input type="password" id="password" placeholder="Enter Password" name="password" required>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
         <hr>
 
         <button type="submit" class="registerbtn">LogIn</button>

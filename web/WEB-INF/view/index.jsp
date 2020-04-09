@@ -11,8 +11,7 @@
     <title></title>
   </head>
   <body>
-  <button onclick="location.href='/logIn'">LogIn</button>
-  <button onclick="location.href='/signUp'">SignUp</button>
+  <button onclick="location.href='/profile'">Profile</button>
   <button onclick="location.href='/uploadFiles'">UploadFiles</button>
   </body>
 </html>
